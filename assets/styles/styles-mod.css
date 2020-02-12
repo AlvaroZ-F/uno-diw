@@ -1,0 +1,185 @@
+/*Webpage's container Styles*/
+body {
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1rem;
+}
+
+.container {
+  width: 90%;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table {
+  border: solid black 1px;
+}
+table thead th {
+  border: solid black 1px;
+  padding: 1rem;
+  margin: 5px;
+}
+table tr td {
+  border: solid black 1px;
+  padding: 1rem;
+  margin: 5px;
+}
+
+/*mq for different sizes*/
+/*layout*/
+.row {
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+.tablespace {
+  margin-top: 10px;
+  position: relative;
+  left: 25%;
+}
+
+.tablerow > .tablecol-1 {
+  background-color: #7d7d7d;
+}
+
+.tablerow > .tablecol-2 {
+  background-color: #c2c2c2;
+}
+
+.tablerow > .tablecol-3 {
+  background-color: #7d7d7d;
+}
+
+.tablerow > .tablecol-4 {
+  background-color: #c2c2c2;
+}
+
+.tablerow > .tablecol-5 {
+  background-color: #7d7d7d;
+}
+
+.tablerow > .tablecol-6 {
+  background-color: #c2c2c2;
+}
+
+.tablerow > .tablecol-7 {
+  background-color: #7d7d7d;
+}
+
+.tablerow > .tablecol-8 {
+  background-color: #c2c2c2;
+}
+
+.tablerow > .tablecol-9 {
+  background-color: #7d7d7d;
+}
+
+.tablerow > .tablecol-10 {
+  background-color: #c2c2c2;
+}
+
+/* Use nesting to create the menu's stylesheet */
+nav {
+  background-color: #9b6f91;
+  padding: 0.2rem;
+}
+nav ul {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  list-style: none;
+}
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+  }
+}
+nav ul li {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (max-width: 768px) {
+  nav ul li {
+    margin-top: 1rem;
+  }
+}
+nav ul li.active {
+  color: #FFFFFF;
+  font-weight: bolder;
+}
+nav ul li:hover {
+  color: #FFFFFF;
+  cursor: pointer;
+}
+nav ul li a {
+  text-decoration: none;
+}
+
+/* Nesting structure for the cards */
+figure.card {
+  border: 0.1rem solid #333333;
+  border-radius: 1rem;
+  display: inline-block;
+  padding: 1rem;
+  width: 20%;
+}
+figure.card img {
+  border-radius: 2rem;
+  width: 100%;
+}
+figure.card figcaption {
+  font-size: 0.8rem;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.button-error {
+  border-radius: 2rem;
+  display: inline-block;
+  padding: 1rem;
+  background: -webkit-linear-gradient(bottom, black 0%, black 0%, #ff0000 25%, #ff0000 100%);
+  background: -moz-linear-gradient(bottom, black 0%, black 0%, #ff0000 25%, #ff0000 100%);
+  background: -o-linear-gradient(bottom, black 0%, black 0%, #ff0000 25%, #ff0000 100%);
+  background: linear-gradient(bottom, black 0%, black 0%, #ff0000 25%, #ff0000 100%);
+}
+
+.button-warning {
+  border-radius: 2rem;
+  display: inline-block;
+  padding: 1rem;
+  background: -webkit-linear-gradient(bottom, black 0%, black 0%, #ffd800 25%, #ffd800 100%);
+  background: -moz-linear-gradient(bottom, black 0%, black 0%, #ffd800 25%, #ffd800 100%);
+  background: -o-linear-gradient(bottom, black 0%, black 0%, #ffd800 25%, #ffd800 100%);
+  background: linear-gradient(bottom, black 0%, black 0%, #ffd800 25%, #ffd800 100%);
+}
+
+.button-normal {
+  border-radius: 2rem;
+  display: inline-block;
+  padding: 1rem;
+  background: -webkit-linear-gradient(bottom, black 0%, black 0%, #154ec4 25%, #154ec4 100%);
+  background: -moz-linear-gradient(bottom, black 0%, black 0%, #154ec4 25%, #154ec4 100%);
+  background: -o-linear-gradient(bottom, black 0%, black 0%, #154ec4 25%, #154ec4 100%);
+  background: linear-gradient(bottom, black 0%, black 0%, #154ec4 25%, #154ec4 100%);
+}
+
+.button-accepted {
+  border-radius: 2rem;
+  display: inline-block;
+  padding: 1rem;
+  background: -webkit-linear-gradient(bottom, black 0%, black 0%, #24671a 25%, #24671a 100%);
+  background: -moz-linear-gradient(bottom, black 0%, black 0%, #24671a 25%, #24671a 100%);
+  background: -o-linear-gradient(bottom, black 0%, black 0%, #24671a 25%, #24671a 100%);
+  background: linear-gradient(bottom, black 0%, black 0%, #24671a 25%, #24671a 100%);
+}
+
+/*# sourceMappingURL=styles-mod.css.map */

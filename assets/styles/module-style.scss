@@ -1,0 +1,229 @@
+// Basic Color Palette
+
+// Main Colors
+$bg-color: #FFFFFF;
+$color-base: #333333;
+
+
+// Navigation Menu Colors
+$bg-color-navbar: rgb(155, 111, 145);
+$navbar-color-hover: $bg-color;
+
+// Border Color
+$border-color: $color-base;
+
+// Column Colors
+$evenColumn: #c2c2c2;
+$oddColumn: #7d7d7d;
+
+// Buttons Colors
+$errorButton: #ff0000;
+$warningButton: #ffd800;
+$acceptButton: #24671a;
+$normalButton: #154ec4;
+
+/*Webpage's container Styles*/
+$container-width: 90%;
+
+body {
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1rem;
+}
+
+.container {
+    width: $container-width;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table {
+    border: solid black 1px;
+
+    thead {
+
+        th {
+            border: solid black 1px;
+            padding: 1rem;
+            margin: 5px;
+        }
+    }
+
+    tr td {
+        border: solid black 1px;
+        padding: 1rem;
+        margin: 5px;
+    }
+}
+
+// Border Styles
+$border-width: 0.1rem;
+$border-style: "solid";
+
+$border-radius-small: 0.2rem;
+$border-radius: 1rem;
+$border-radius-big: 2rem;
+
+/*mq for different sizes*/
+// breakpoints map
+$breakpoints: ( xs: 576px, sm: 768px, md: 992px, lg: 1200px );
+
+$list-button-e: black 0%, black 0%, $errorButton 25%, $errorButton 100%;
+$list-button-w: black 0%, black 0%, $warningButton 25%, $warningButton 100%;
+$list-button-a: black 0%, black 0%, $acceptButton 25%, $acceptButton 100%;
+$list-button-n: black 0%, black 0%, $normalButton 25%, $normalButton 100%;
+
+
+// mixin
+@mixin respond-above($breakpoint) {
+    // If the breakpoint is within the list provided.
+    @if map-has-key($breakpoints, $breakpoint) {
+        // Get the value.
+        $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+        // Write media query.
+        @media (max-width: $breakpoint-value) {
+            @content;
+        }
+        // If the breakpoint does not exist.
+    }
+    @else {
+        // Log a warning.
+        @warn 'Unvalid breakpoint: #{$breakpoint}.';
+    }
+}
+
+@mixin gradient($direction, $list) {
+    background: -webkit-linear-gradient($direction, $list);
+    background: -moz-linear-gradient($direction, $list);
+    background: -o-linear-gradient($direction, $list);
+    background: linear-gradient($direction, $list);
+}
+
+
+/*layout*/
+.row {
+    display: flex;
+    flex-direction: row;
+    //flex-wrap: nowrap;
+    @include respond-above(sm) {
+        flex-direction: column;
+    } 
+}
+
+.tablespace {
+    margin-top: 10px;
+    position: relative;
+    left: 25%;
+}
+
+$num_elementos: 10;
+
+// Function that returns the element's width
+@function odd_even($i) {
+    @if $i % 2 == 0 {
+        @return $evenColumn;
+    }
+    @else {
+        @return $oddColumn;
+    }
+}
+
+// Loop to generate classes
+@for $i from 1 through $num_elementos {
+    .tablerow > .tablecol-#{$i} {
+        background-color: #{odd_even($i)};
+    }
+}
+/* Use nesting to create the menu's stylesheet */
+nav {
+    background-color: $bg-color-navbar;
+    padding: 0.2rem;
+
+    ul {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        list-style: none;
+
+        @include respond-above(sm) {
+            flex-direction: column;
+        }
+
+        li {
+            // display: inline-block;
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+            @include respond-above(sm) {
+                margin-top: 1rem;
+            }
+
+            &.active {
+                color: $navbar-color-hover;
+                font-weight: bolder;
+            }
+
+            &:hover {
+                color: $navbar-color-hover;
+                cursor: pointer;
+            }
+
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+/* Nesting structure for the cards */
+$figure-width: 20%;
+
+figure.card {
+    border: $border-width #{$border-style} $border-color;
+    border-radius: $border-radius;
+    display: inline-block;
+    padding: 1rem;
+    width: $figure-width;
+
+    img {
+        border-radius: $border-radius-big;
+        width: 100%;
+    }
+
+    figcaption {
+        font-size: 0.8rem;
+        margin: 0.5rem;
+        text-align: center;
+    }
+}
+
+// maps buttons with each
+
+$buttons: ("error": $errorButton, "warning": $warningButton, "normal": $normalButton, "accepted": $acceptButton);
+
+@each $name, $color in $buttons {
+    .button-#{$name} {
+        border-radius: $border-radius-big;
+        display: inline-block;
+        padding: 1rem;
+
+        @if $name == "error" {
+            @include gradient(bottom, $list-button-e);
+        }
+        @else if $name == "warning" {
+            @include gradient(bottom, $list-button-w);
+        }
+        @else if $name == "accepted" {
+            @include gradient(bottom, $list-button-a);
+        }
+        @else {
+            @include gradient(bottom, $list-button-n);
+        }
+    }
+}
